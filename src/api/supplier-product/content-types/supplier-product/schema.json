@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supplier_products",
+  "info": {
+    "singularName": "supplier-product",
+    "pluralName": "supplier-products",
+    "displayName": "Supplier Product",
+    "description": "Product from specific supplier with pricing"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "supplierProducts"
+    },
+    "supplier": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::supplier.supplier",
+      "inversedBy": "supplierProducts"
+    },
+    "costPrice": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "warehouseStock": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::warehouse-stock.warehouse-stock",
+      "mappedBy": "supplierProduct"
+    },
+    "priceHistory": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price-history.price-history",
+      "mappedBy": "supplierProduct"
+    }
+  }
+}

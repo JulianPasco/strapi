@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "warehouse_stocks",
+  "info": {
+    "singularName": "warehouse-stock",
+    "pluralName": "warehouse-stocks",
+    "displayName": "Warehouse Stock",
+    "description": "Stock levels at specific warehouse"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "supplierProduct": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::supplier-product.supplier-product",
+      "inversedBy": "warehouseStock"
+    },
+    "warehouse": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::warehouse.warehouse",
+      "inversedBy": "warehouseStock"
+    },
+    "quantityAvailable": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "lastUpdated": {
+      "type": "datetime"
+    }
+  }
+}

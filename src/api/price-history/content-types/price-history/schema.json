@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "price_histories",
+  "info": {
+    "singularName": "price-history",
+    "pluralName": "price-histories",
+    "displayName": "Price History",
+    "description": "Historical cost price tracking"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "supplierProduct": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::supplier-product.supplier-product",
+      "inversedBy": "priceHistory"
+    },
+    "costPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "effectiveDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}
